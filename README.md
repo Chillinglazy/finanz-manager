@@ -29,5 +29,6 @@ Stand: 2026-10-29
 - [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
 - [x] Monatliche Budgets pro Kategorie (`/budgets`: Betrag pro Kategorie, Fortschrittsbalken, Vormonat übernehmen)
 - [x] Dashboard (`/dashboard`: Monatssummen, Budget-Status mit Warnung, Ausgaben nach Kategorie)
+- [x] Landingpage (`/`: Hero mit Dashboard-Vorschau, Funktionen, Footer)
 - [ ] Supabase-Projekt anlegen und alles mit echten Daten testen
 - [ ] Deployment auf Vercel

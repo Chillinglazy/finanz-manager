@@ -20,6 +20,7 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 - `src/lib/supabase` – Supabase-Clients: `client.ts` (Browser), `server.ts` (Server Components/Actions), `middleware.ts` (Session-Refresh)
 - `src/middleware.ts` – Next.js-Middleware, erneuert die Auth-Session; nicht angemeldete Nutzer werden außer auf `/`, `/login`, `/registrieren` und `/auth/*` zu `/login` umgeleitet
 - `src/app/auth/actions.ts` – Server Actions für Login, Registrierung, Logout
+- `src/app/page.tsx` – öffentliche Landingpage (statische Dashboard-Vorschau mit Beispielzahlen)
 - `src/app/(auth)/` – Login- und Registrierungsseiten
 - `src/app/kategorien/` – Kategorien-Seite und Server Actions
 - `src/components/AppHeader.tsx` – Navigation für angemeldete Seiten (neue Seiten dort verlinken)
@@ -69,5 +70,6 @@ Stand: 2026-10-29
 - [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
 - [x] Monatliche Budgets pro Kategorie (`/budgets`: Betrag pro Kategorie, Fortschrittsbalken, Vormonat übernehmen)
 - [x] Dashboard (`/dashboard`: Monatssummen, Budget-Status mit Warnung, Ausgaben nach Kategorie)
+- [x] Landingpage (`/`: Hero mit Dashboard-Vorschau, Funktionen, Footer)
 - [ ] Supabase-Projekt anlegen und alles mit echten Daten testen
 - [ ] Deployment auf Vercel
