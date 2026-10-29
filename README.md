@@ -26,6 +26,6 @@ Stand: 2026-10-29
 - [x] Datenbankschema mit Row Level Security und Standard-Kategorien
 - [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
 - [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
-- [ ] Transaktionen
+- [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
 - [ ] Monatliche Budgets pro Kategorie
 - [ ] Dashboard

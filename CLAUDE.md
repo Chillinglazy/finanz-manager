@@ -23,7 +23,10 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 - `src/app/(auth)/` – Login- und Registrierungsseiten
 - `src/app/kategorien/` – Kategorien-Seite und Server Actions
 - `src/components/AppHeader.tsx` – Navigation für angemeldete Seiten (neue Seiten dort verlinken)
+- `src/app/transaktionen/` – Transaktionen-Seite und Server Actions
 - `src/lib/types.ts` – gemeinsame Typen und deutsche Labels
+- `src/lib/money.ts` – Euro-Eingaben in Cent umwandeln (`parseEuroToCents`) und formatieren (`formatCents`)
+- `src/lib/month.ts` – Monatslogik; Monate als `?monat=YYYY-MM` in der URL, `MonthSwitcher` zum Blättern
 - `supabase/migrations` – SQL-Migrationen, eine Datei pro Änderung, mit Zeitstempel im Namen
 - `public` – statische Dateien
 - `docs` – Planung und Dokumentation
@@ -59,6 +62,6 @@ Stand: 2026-10-29
 - [x] Datenbankschema mit Row Level Security und Standard-Kategorien
 - [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
 - [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
-- [ ] Transaktionen
+- [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
 - [ ] Monatliche Budgets pro Kategorie
 - [ ] Dashboard
