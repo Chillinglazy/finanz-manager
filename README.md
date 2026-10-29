@@ -25,7 +25,7 @@ Stand: 2026-10-29
 - [x] Next.js-Projekt aufgesetzt (TypeScript, Tailwind, Supabase-Clients, Middleware)
 - [x] Datenbankschema mit Row Level Security und Standard-Kategorien
 - [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
-- [ ] Kategorien
+- [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
 - [ ] Transaktionen
 - [ ] Monatliche Budgets pro Kategorie
 - [ ] Dashboard

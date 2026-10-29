@@ -21,6 +21,9 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 - `src/middleware.ts` – Next.js-Middleware, erneuert die Auth-Session; nicht angemeldete Nutzer werden außer auf `/`, `/login`, `/registrieren` und `/auth/*` zu `/login` umgeleitet
 - `src/app/auth/actions.ts` – Server Actions für Login, Registrierung, Logout
 - `src/app/(auth)/` – Login- und Registrierungsseiten
+- `src/app/kategorien/` – Kategorien-Seite und Server Actions
+- `src/components/AppHeader.tsx` – Navigation für angemeldete Seiten (neue Seiten dort verlinken)
+- `src/lib/types.ts` – gemeinsame Typen und deutsche Labels
 - `supabase/migrations` – SQL-Migrationen, eine Datei pro Änderung, mit Zeitstempel im Namen
 - `public` – statische Dateien
 - `docs` – Planung und Dokumentation
@@ -55,7 +58,7 @@ Stand: 2026-10-29
 - [x] Next.js-Projekt aufgesetzt (TypeScript, Tailwind, Supabase-Clients, Middleware)
 - [x] Datenbankschema mit Row Level Security und Standard-Kategorien
 - [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
-- [ ] Kategorien
+- [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
 - [ ] Transaktionen
 - [ ] Monatliche Budgets pro Kategorie
 - [ ] Dashboard
