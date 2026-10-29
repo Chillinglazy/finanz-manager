@@ -18,7 +18,20 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 - `src/components` – wiederverwendbare UI-Komponenten
 - `src/lib` – Typen, Hilfsfunktionen
 - `src/lib/supabase` – Supabase-Clients: `client.ts` (Browser), `server.ts` (Server Components/Actions), `middleware.ts` (Session-Refresh)
-- `src/middleware.ts` – Next.js-Middleware, erneuert die Auth-Session
+- `src/middleware.ts` – Next.js-Middleware, erneuert die Auth-Session; nicht angemeldete Nutzer werden außer auf `/`, `/login`, `/registrieren` und `/auth/*` zu `/login` umgeleitet
+- `src/app/auth/actions.ts` – Server Actions für Login, Registrierung, Logout
+- `src/app/page.tsx` – öffentliche Landingpage (statische Dashboard-Vorschau mit Beispielzahlen)
+- `src/app/(auth)/` – Login- und Registrierungsseiten
+- `src/app/kategorien/` – Kategorien-Seite und Server Actions
+- `src/components/AppHeader.tsx` – Navigation für angemeldete Seiten (neue Seiten dort verlinken)
+- `src/app/transaktionen/` – Transaktionen-Seite und Server Actions
+- `src/app/budgets/` – Budgets-Seite und Server Actions (Upsert auf `user_id, category_id, month`)
+- `src/lib/budgets.ts` – `loadBudgetOverview`: Budgets und Ausgaben pro Kategorie für einen Monat (auch fürs Dashboard)
+- `src/components/BudgetBar.tsx` – Fortschrittsbalken ausgegeben/Budget
+- `src/app/dashboard/` – Dashboard mit Monatsübersicht
+- `src/lib/types.ts` – gemeinsame Typen und deutsche Labels
+- `src/lib/money.ts` – Euro-Eingaben in Cent umwandeln (`parseEuroToCents`) und formatieren (`formatCents`)
+- `src/lib/month.ts` – Monatslogik; Monate als `?monat=YYYY-MM` in der URL, `MonthSwitcher` zum Blättern
 - `supabase/migrations` – SQL-Migrationen, eine Datei pro Änderung, mit Zeitstempel im Namen
 - `public` – statische Dateien
 - `docs` – Planung und Dokumentation
@@ -40,7 +53,7 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 
 ## Workflow
 - README.md und CLAUDE.md nach jedem abgeschlossenen Schritt aktualisieren (Abschnitt „Fortschritt“ in beiden Dateien, Datum anpassen).
-- Vor Push oder Pull Request beim Nutzer nachfragen.
+- Pull Requests ohne Rückfrage öffnen und pushen, sobald `npm run lint` und `npm run build` fehlerfrei sind (Feature-Branch → PR, nie direkt auf `main`).
 - Kleine, thematisch abgegrenzte Commits.
 
 ## Fortschritt
@@ -52,8 +65,11 @@ Stand: 2026-10-29
 - [x] GitHub-Repo angelegt und verbunden
 - [x] Next.js-Projekt aufgesetzt (TypeScript, Tailwind, Supabase-Clients, Middleware)
 - [x] Datenbankschema mit Row Level Security und Standard-Kategorien
-- [ ] Registrierung und Login
-- [ ] Kategorien
-- [ ] Transaktionen
-- [ ] Monatliche Budgets pro Kategorie
-- [ ] Dashboard
+- [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
+- [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
+- [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
+- [x] Monatliche Budgets pro Kategorie (`/budgets`: Betrag pro Kategorie, Fortschrittsbalken, Vormonat übernehmen)
+- [x] Dashboard (`/dashboard`: Monatssummen, Budget-Status mit Warnung, Ausgaben nach Kategorie)
+- [x] Landingpage (`/`: Hero mit Dashboard-Vorschau, Funktionen, Footer)
+- [ ] Supabase-Projekt anlegen und alles mit echten Daten testen
+- [ ] Deployment auf Vercel
