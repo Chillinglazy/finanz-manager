@@ -27,5 +27,5 @@ Stand: 2026-10-29
 - [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
 - [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
 - [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
-- [ ] Monatliche Budgets pro Kategorie
+- [x] Monatliche Budgets pro Kategorie (`/budgets`: Betrag pro Kategorie, Fortschrittsbalken, Vormonat übernehmen)
 - [ ] Dashboard

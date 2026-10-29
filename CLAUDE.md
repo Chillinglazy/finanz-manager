@@ -24,6 +24,9 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 - `src/app/kategorien/` – Kategorien-Seite und Server Actions
 - `src/components/AppHeader.tsx` – Navigation für angemeldete Seiten (neue Seiten dort verlinken)
 - `src/app/transaktionen/` – Transaktionen-Seite und Server Actions
+- `src/app/budgets/` – Budgets-Seite und Server Actions (Upsert auf `user_id, category_id, month`)
+- `src/lib/budgets.ts` – `loadBudgetOverview`: Budgets und Ausgaben pro Kategorie für einen Monat (auch fürs Dashboard)
+- `src/components/BudgetBar.tsx` – Fortschrittsbalken ausgegeben/Budget
 - `src/lib/types.ts` – gemeinsame Typen und deutsche Labels
 - `src/lib/money.ts` – Euro-Eingaben in Cent umwandeln (`parseEuroToCents`) und formatieren (`formatCents`)
 - `src/lib/month.ts` – Monatslogik; Monate als `?monat=YYYY-MM` in der URL, `MonthSwitcher` zum Blättern
@@ -63,5 +66,5 @@ Stand: 2026-10-29
 - [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
 - [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
 - [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
-- [ ] Monatliche Budgets pro Kategorie
+- [x] Monatliche Budgets pro Kategorie (`/budgets`: Betrag pro Kategorie, Fortschrittsbalken, Vormonat übernehmen)
 - [ ] Dashboard
