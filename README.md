@@ -12,7 +12,8 @@ Siehe [docs/plan.md](docs/plan.md) für Stack-Empfehlung und MVP-Plan.
 2. Ein Projekt auf [supabase.com](https://supabase.com) anlegen
 3. Im Supabase SQL-Editor `supabase/migrations/20261029000000_initial_schema.sql` ausführen
 4. `.env.example` nach `.env.local` kopieren und URL + Anon-Key aus Supabase (Settings > API) eintragen
-5. `npm install` und `npm run dev`, dann http://localhost:3000 öffnen
+5. In Supabase unter Authentication > URL Configuration `http://localhost:3000/auth/confirm` als Redirect-URL eintragen
+6. `npm install` und `npm run dev`, dann http://localhost:3000 öffnen
 
 ## Fortschritt
 
@@ -23,7 +24,7 @@ Stand: 2026-10-29
 - [x] GitHub-Repo angelegt und verbunden
 - [x] Next.js-Projekt aufgesetzt (TypeScript, Tailwind, Supabase-Clients, Middleware)
 - [x] Datenbankschema mit Row Level Security und Standard-Kategorien
-- [ ] Registrierung und Login
+- [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
 - [ ] Kategorien
 - [ ] Transaktionen
 - [ ] Monatliche Budgets pro Kategorie
