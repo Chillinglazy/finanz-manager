@@ -28,4 +28,6 @@ Stand: 2026-10-29
 - [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
 - [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
 - [x] Monatliche Budgets pro Kategorie (`/budgets`: Betrag pro Kategorie, Fortschrittsbalken, Vormonat übernehmen)
-- [ ] Dashboard
+- [x] Dashboard (`/dashboard`: Monatssummen, Budget-Status mit Warnung, Ausgaben nach Kategorie)
+- [ ] Supabase-Projekt anlegen und alles mit echten Daten testen
+- [ ] Deployment auf Vercel

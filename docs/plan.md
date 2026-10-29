@@ -3,7 +3,7 @@
 ## Stack
 - Next.js + TypeScript: Frontend und Backend in einem Projekt
 - Supabase: Login/Accounts und Postgres-Datenbank; Row Level Security, damit jeder Nutzer nur seine eigenen Daten sieht
-- Tailwind CSS fürs Design, dazu ein Chart-Paket fürs Dashboard
+- Tailwind CSS fürs Design; Diagramme im Dashboard vorerst als einfache Tailwind-Balken ohne Zusatzpaket
 - Hosting: Vercel + Supabase Free Tier
 
 ## MVP
