@@ -45,7 +45,7 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 
 ## Workflow
 - README.md und CLAUDE.md nach jedem abgeschlossenen Schritt aktualisieren (Abschnitt „Fortschritt“ in beiden Dateien, Datum anpassen).
-- Vor Push oder Pull Request beim Nutzer nachfragen.
+- Pull Requests ohne Rückfrage öffnen und pushen, sobald `npm run lint` und `npm run build` fehlerfrei sind (Feature-Branch → PR, nie direkt auf `main`).
 - Kleine, thematisch abgegrenzte Commits.
 
 ## Fortschritt
