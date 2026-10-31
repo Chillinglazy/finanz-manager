@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Budgets · Finanz-Manager</title>
+  <meta name="description" content="Budgets, Kategorien und Ausgaben im Blick">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/budgets.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header id="app-header"></header>
+    <div class="row">
+      <h1>Budgets</h1>
+      <div id="month-switcher"></div>
+    </div>
+    <p class="muted">Lege fest, wie viel du pro Ausgaben-Kategorie in diesem Monat ausgeben willst. Ein leeres Feld entfernt das Budget.</p>
+    <div id="summary"></div>
+    <p id="load-error" class="error hidden" role="alert"></p>
+    <div id="budgets"></div>
+  </main>
+</body>
+</html>

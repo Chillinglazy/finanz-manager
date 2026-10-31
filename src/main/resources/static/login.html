@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anmelden · Finanz-Manager</title>
+  <meta name="description" content="Budgets, Kategorien und Ausgaben im Blick">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/auth.js" defer></script>
+</head>
+<body>
+  <main class="page narrow">
+    <a href="/" class="brand" style="text-decoration: none"><span>€</span> Finanz-Manager</a>
+    <h1>Anmelden</h1>
+    <form id="auth-form" class="stack" data-mode="login" novalidate>
+      <label>E-Mail
+        <input class="input" name="email" type="email" autocomplete="email" required>
+      </label>
+      <label>Passwort
+        <input class="input" name="password" type="password" autocomplete="current-password" required minlength="8">
+      </label>
+      <p id="form-error" class="error hidden" role="alert"></p>
+      <button type="submit" class="btn btn-primary">Anmelden</button>
+    </form>
+    <p class="small muted">Noch kein Konto? <a href="/registrieren" class="link">Jetzt registrieren</a></p>
+  </main>
+</body>
+</html>

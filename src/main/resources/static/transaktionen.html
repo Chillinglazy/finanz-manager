@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transaktionen · Finanz-Manager</title>
+  <meta name="description" content="Budgets, Kategorien und Ausgaben im Blick">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/transaktionen.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header id="app-header"></header>
+    <div class="row">
+      <h1>Transaktionen</h1>
+      <div id="month-switcher"></div>
+    </div>
+    <form id="transaction-form" class="card form-grid" novalidate>
+      <fieldset class="toggle full">
+        <legend class="hidden">Art</legend>
+        <label><input type="radio" name="kind" value="EXPENSE" checked> Ausgabe</label>
+        <label><input type="radio" name="kind" value="INCOME"> Einnahme</label>
+      </fieldset>
+      <label>Betrag (€)
+        <input class="input" name="amount" inputmode="decimal" placeholder="12,50" required>
+      </label>
+      <label>Datum
+        <input class="input" name="occurredOn" type="date" required>
+      </label>
+      <label>Kategorie
+        <select class="input" name="categoryId"></select>
+      </label>
+      <label>Notiz
+        <input class="input" name="note" maxlength="200" placeholder="z. B. Wocheneinkauf">
+      </label>
+      <p id="form-error" class="error hidden full" role="alert"></p>
+      <button type="submit" class="btn btn-primary full">Ausgabe speichern</button>
+    </form>
+    <dl id="tiles" class="tiles three"></dl>
+    <p id="load-error" class="error hidden" role="alert"></p>
+    <div id="transactions"></div>
+  </main>
+</body>
+</html>

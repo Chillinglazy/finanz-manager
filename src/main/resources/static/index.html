@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finanz-Manager</title>
+  <meta name="description" content="Budgets, Kategorien und Ausgaben im Blick">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/landing.js" defer></script>
+</head>
+<body>
+  <header class="landing-header">
+    <span class="brand"><span>€</span> Finanz-Manager</span>
+    <a href="/login" class="small" style="font-weight: 500; text-decoration: none">Anmelden</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="stack" style="gap: 24px">
+        <h1>Behalte dein Geld im Griff, <em>Monat für Monat.</em></h1>
+        <p class="lead">Erfasse Einnahmen und Ausgaben, setze Budgets pro Kategorie und erkenne auf einen Blick, wo dein Geld hingeht.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px">
+          <a href="/registrieren" class="btn btn-primary btn-large">Kostenlos registrieren</a>
+          <a href="/login" class="btn btn-large">Anmelden</a>
+        </div>
+        <p class="muted">Kostenlos · Deine Daten siehst nur du</p>
+      </div>
+
+      <div class="preview" aria-hidden="true">
+        <div class="row" style="margin-bottom: 16px">
+          <strong>Oktober 2026</strong>
+          <span class="muted" style="font-size: 0.75rem">Dashboard</span>
+        </div>
+        <dl class="tiles three" style="margin-bottom: 20px">
+          <div class="tile income"><dt>Einnahmen</dt><dd style="font-size: 0.9rem">2.850,00 €</dd></div>
+          <div class="tile expense"><dt>Ausgaben</dt><dd style="font-size: 0.9rem">1.711,00 €</dd></div>
+          <div class="tile"><dt>Saldo</dt><dd style="font-size: 0.9rem">1.139,00 €</dd></div>
+        </dl>
+        <ul id="preview-budgets" class="stack" style="list-style: none; margin: 0; padding: 0"></ul>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="features-inner">
+        <div class="feature">
+          <span class="icon" aria-hidden="true">🎯</span>
+          <h2>Budgets pro Kategorie</h2>
+          <p class="small muted">Lege fest, wie viel du jeden Monat für Miete, Essen oder Freizeit ausgeben willst, und sieh sofort, wie viel noch übrig ist.</p>
+        </div>
+        <div class="feature">
+          <span class="icon" aria-hidden="true">🏷️</span>
+          <h2>Eigene Kategorien</h2>
+          <p class="small muted">Starte mit sinnvollen Standard-Kategorien und passe sie an dein Leben an: anlegen, umbenennen, löschen.</p>
+        </div>
+        <div class="feature">
+          <span class="icon" aria-hidden="true">📊</span>
+          <h2>Alles auf einen Blick</h2>
+          <p class="small muted">Einnahmen, Ausgaben und Saldo pro Monat, mit Warnung, sobald ein Budget überschritten wird.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2 style="font-size: 1.5rem">In zwei Minuten startklar</h2>
+      <p class="muted" style="max-width: 36rem">Konto anlegen, Standard-Kategorien sind schon da, erste Ausgabe eintragen. Fertig.</p>
+      <a href="/registrieren" class="btn btn-primary btn-large">Jetzt loslegen</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <span>© <span id="year">2026</span> Finanz-Manager</span>
+      <span>Gemacht für deine persönlichen Finanzen</span>
+    </div>
+  </footer>
+</body>
+</html>

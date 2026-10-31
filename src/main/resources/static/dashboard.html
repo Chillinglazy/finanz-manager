@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · Finanz-Manager</title>
+  <meta name="description" content="Budgets, Kategorien und Ausgaben im Blick">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/dashboard.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header id="app-header"></header>
+    <div class="row">
+      <h1>Dashboard</h1>
+      <div id="month-switcher"></div>
+    </div>
+    <p id="load-error" class="error hidden" role="alert"></p>
+    <dl id="tiles" class="tiles"></dl>
+    <p id="over-budget" class="alert hidden" role="alert"></p>
+    <section class="stack">
+      <div class="row">
+        <h2>Budgets</h2>
+        <a id="budgets-link" href="/budgets" class="link">Budgets bearbeiten</a>
+      </div>
+      <div id="budgets"></div>
+    </section>
+    <section class="stack">
+      <div class="row">
+        <h2>Ausgaben nach Kategorie</h2>
+        <a id="transactions-link" href="/transaktionen" class="link">Transaktionen</a>
+      </div>
+      <div id="spending"></div>
+    </section>
+  </main>
+</body>
+</html>
