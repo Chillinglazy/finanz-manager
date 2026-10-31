@@ -8,68 +8,57 @@ Kernfunktionen: Kategorien, Transaktionen (Einnahmen/Ausgaben), monatliche Budge
 Details zum MVP: [docs/plan.md](docs/plan.md).
 
 ## Stack
-- Next.js 15 (App Router, React 19) + TypeScript (strict)
-- Supabase: Auth (E-Mail/Passwort) und Postgres
-- Tailwind CSS 4
-- Hosting: Vercel + Supabase
+- Backend: Java 21, Spring Boot 4 (Web MVC, Security, Data JPA, Flyway), Maven (`./mvnw`)
+- Datenbank: PostgreSQL (lokal per `docker compose`), Tests mit H2 im PostgreSQL-Modus
+- Frontend: reines HTML, CSS und JavaScript ohne Framework und ohne Build-Schritt
+- Hosting: offen (Java-fähig, z. B. Render oder Railway)
 
 ## Ordnerstruktur
-- `src/app` – Seiten, Layouts, Route Handler, Server Actions
-- `src/components` – wiederverwendbare UI-Komponenten
-- `src/lib` – Typen, Hilfsfunktionen
-- `src/lib/supabase` – Supabase-Clients: `client.ts` (Browser), `server.ts` (Server Components/Actions), `middleware.ts` (Session-Refresh)
-- `src/middleware.ts` – Next.js-Middleware, erneuert die Auth-Session; nicht angemeldete Nutzer werden außer auf `/`, `/login`, `/registrieren` und `/auth/*` zu `/login` umgeleitet
-- `src/app/auth/actions.ts` – Server Actions für Login, Registrierung, Logout
-- `src/app/page.tsx` – öffentliche Landingpage (statische Dashboard-Vorschau mit Beispielzahlen)
-- `src/app/(auth)/` – Login- und Registrierungsseiten
-- `src/app/kategorien/` – Kategorien-Seite und Server Actions
-- `src/components/AppHeader.tsx` – Navigation für angemeldete Seiten (neue Seiten dort verlinken)
-- `src/app/transaktionen/` – Transaktionen-Seite und Server Actions
-- `src/app/budgets/` – Budgets-Seite und Server Actions (Upsert auf `user_id, category_id, month`)
-- `src/lib/budgets.ts` – `loadBudgetOverview`: Budgets und Ausgaben pro Kategorie für einen Monat (auch fürs Dashboard)
-- `src/components/BudgetBar.tsx` – Fortschrittsbalken ausgegeben/Budget
-- `src/app/dashboard/` – Dashboard mit Monatsübersicht
-- `src/lib/types.ts` – gemeinsame Typen und deutsche Labels
-- `src/lib/money.ts` – Euro-Eingaben in Cent umwandeln (`parseEuroToCents`) und formatieren (`formatCents`)
-- `src/lib/month.ts` – Monatslogik; Monate als `?monat=YYYY-MM` in der URL, `MonthSwitcher` zum Blättern
-- `supabase/migrations` – SQL-Migrationen, eine Datei pro Änderung, mit Zeitstempel im Namen
-- `public` – statische Dateien
-- `docs` – Planung und Dokumentation
+- `src/main/java/de/finanzmanager/` – Backend, ein Paket pro Bereich:
+  - `user/` – `AppUser`, Login/Registrierung (`AuthController`), `AppUserPrincipal` (per `@AuthenticationPrincipal` in Controllern)
+  - `category/`, `transaction/`, `budget/` – jeweils Entity, Repository, Service, Controller
+  - `budget/BudgetService.overview` – Budgets und Ausgaben pro Kategorie für einen Monat (auch fürs Dashboard)
+  - `dashboard/` – Monatsübersicht
+  - `config/SecurityConfig.java` – Session-Login, CSRF per Cookie `XSRF-TOKEN`, `/api/**` braucht Anmeldung, 401 statt Redirect
+  - `config/WebConfig.java` – schöne URLs (`/dashboard` → `dashboard.html`); neue Seiten dort eintragen
+  - `common/` – `ApiException` (Fehler mit deutscher Meldung → JSON `{"error": ...}`), `Money` (Euro-Text → Cent), `Months` (`YYYY-MM`)
+- `src/main/resources/static/` – Frontend: eine HTML-Datei pro Seite, `js/common.js` (API-Aufrufe, `formatCents`, Monate, Kopfzeile, `budgetBar`), ein Skript pro Seite, `css/style.css`
+- `src/main/resources/db/migration/` – Flyway-Migrationen (`V2__beschreibung.sql` usw.), nie bestehende Dateien ändern
+- `src/main/resources/application.properties` – Konfiguration, DB über `DB_URL`, `DB_USER`, `DB_PASSWORD`
+- `src/test/` – JUnit-Tests (`ApiIntegrationTest` mit MockMvc)
+- `docs/` – Planung und Dokumentation
 
 ## Konventionen
-- Sicherheit: Jede Tabelle mit Nutzerdaten hat eine `user_id`-Spalte und Row Level Security (`user_id = auth.uid()`). Nie RLS deaktivieren, nie den Service-Role-Key im Client verwenden.
-- Geldbeträge als Ganzzahl in Cent speichern (`bigint`), nie als Float. Anzeige mit `Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' })`.
-- Datum als `date` bzw. `timestamptz` speichern; Budgets beziehen sich auf einen Monat (erster Tag des Monats).
-- Datenzugriff bevorzugt in Server Components und Server Actions.
-- Komponenten in PascalCase, Dateien für Hilfsfunktionen in camelCase.
-- UI-Texte auf Deutsch, Code und Bezeichner auf Englisch.
-- Secrets nur in `.env.local` (nicht committen); Vorlage in `.env.example` pflegen.
+- Sicherheit: Jede Tabelle mit Nutzerdaten hat eine `user_id`. Jede Abfrage im Service filtert auf den angemeldeten Nutzer (`findByIdAndUserId` usw.); fremde IDs ergeben 404. Nie Daten ohne `userId` laden.
+- Geldbeträge als Ganzzahl in Cent (`long` / `bigint`), nie als `double`. Eingaben als Text („12,50“) an die API, Umrechnung mit `Money.parseEuroToCents`. Anzeige im Frontend mit `formatCents` (`Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' })`).
+- Datum als `LocalDate` / `date`; Budgets beziehen sich auf einen Monat (erster Tag des Monats). Monate in der API als `?month=YYYY-MM`, in Seiten-URLs als `?monat=YYYY-MM`.
+- Frontend: DOM nur über `h(...)` aus `common.js` bauen (kein `innerHTML` mit Nutzerdaten), API nur über `api(...)` (setzt CSRF-Header, leitet bei 401 zum Login).
+- Klassen in PascalCase, ein Paket pro Fachbereich, Konstruktor-Injection.
+- UI-Texte und Fehlermeldungen auf Deutsch, Code und Bezeichner auf Englisch.
+- Secrets nur als Umgebungsvariablen (nicht committen); Vorlage in `.env.example` pflegen.
 
 ## Befehle
-- `npm run dev` – Entwicklungsserver auf http://localhost:3000
-- `npm run build` – Produktions-Build (vor jedem Commit prüfen)
-- `npm run lint` – ESLint
-- Schema-Änderungen: neue Datei in `supabase/migrations/`, im Supabase SQL-Editor ausführen
+- `docker compose up -d` – PostgreSQL starten
+- `./mvnw spring-boot:run` – App auf http://localhost:8080
+- `./mvnw test` – Tests (vor jedem Commit)
+- `./mvnw package` – Build (vor jedem Commit prüfen)
+- Schema-Änderungen: neue Datei `src/main/resources/db/migration/V<n>__<name>.sql`, läuft beim Start automatisch
 
 ## Workflow
 - README.md und CLAUDE.md nach jedem abgeschlossenen Schritt aktualisieren (Abschnitt „Fortschritt“ in beiden Dateien, Datum anpassen).
-- Pull Requests ohne Rückfrage öffnen und pushen, sobald `npm run lint` und `npm run build` fehlerfrei sind (Feature-Branch → PR, nie direkt auf `main`).
+- Pull Requests ohne Rückfrage öffnen und pushen, sobald `./mvnw test` und `./mvnw package` fehlerfrei sind (Feature-Branch → PR, nie direkt auf `main`).
 - Kleine, thematisch abgegrenzte Commits.
 
 ## Fortschritt
 
-Stand: 2026-10-29
+Stand: 2026-10-31
 
 - [x] Stack-Empfehlung und MVP-Plan (`docs/plan.md`)
 - [x] Ordnerstruktur und CLAUDE.md angelegt
 - [x] GitHub-Repo angelegt und verbunden
-- [x] Next.js-Projekt aufgesetzt (TypeScript, Tailwind, Supabase-Clients, Middleware)
-- [x] Datenbankschema mit Row Level Security und Standard-Kategorien
-- [x] Registrierung und Login (`/registrieren`, `/login`, geschützte Seiten über Middleware)
-- [x] Kategorien (`/kategorien`: anlegen, umbenennen, löschen)
-- [x] Transaktionen (`/transaktionen`: erfassen, löschen, Monatsübersicht mit Saldo)
-- [x] Monatliche Budgets pro Kategorie (`/budgets`: Betrag pro Kategorie, Fortschrittsbalken, Vormonat übernehmen)
-- [x] Dashboard (`/dashboard`: Monatssummen, Budget-Status mit Warnung, Ausgaben nach Kategorie)
-- [x] Landingpage (`/`: Hero mit Dashboard-Vorschau, Funktionen, Footer)
-- [ ] Supabase-Projekt anlegen und alles mit echten Daten testen
-- [ ] Deployment auf Vercel
+- [x] MVP in Next.js + Supabase gebaut (Login, Kategorien, Transaktionen, Budgets, Dashboard, Landingpage)
+- [x] Umstellung auf Java: Spring-Boot-Backend mit REST-API, eigenem Login (Spring Security) und Flyway-Schema
+- [x] Frontend in HTML/CSS/JS nachgebaut (alle Seiten wie vorher)
+- [x] Tests (JUnit + MockMvc), lokal mit PostgreSQL 16 durchgeklickt
+- [ ] Lokal mit Docker starten und selbst ausprobieren
+- [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)
