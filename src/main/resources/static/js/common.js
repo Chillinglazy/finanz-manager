@@ -105,11 +105,16 @@ async function currentUser() {
 // ---------- Bausteine ----------
 
 const NAV_LINKS = [
-  ["/dashboard", "Dashboard"],
-  ["/transaktionen", "Transaktionen"],
-  ["/budgets", "Budgets"],
-  ["/kategorien", "Kategorien"],
+  ["/dashboard", "📊", "Dashboard"],
+  ["/transaktionen", "💸", "Transaktionen"],
+  ["/budgets", "🎯", "Budgets"],
+  ["/kategorien", "🏷️", "Kategorien"],
 ];
+
+/** Symbol vor einem Link- oder Buttontext (für Screenreader ausgeblendet). */
+function icon(symbol) {
+  return h("span", { class: "icon", "aria-hidden": "true" }, symbol);
+}
 
 /** Füllt <header id="app-header"> mit Logo (Link zur Startseite), Navigation und Abmelden-Button. */
 function renderAppHeader() {
@@ -118,11 +123,13 @@ function renderAppHeader() {
   header.className = "app-header";
   const path = location.pathname.replace(/\.html$/, "");
   header.replaceChildren(
-    h("a", { href: "/", class: "brand", style: "text-decoration: none" }, h("span", {}, "€"), " Finanz-Manager"),
+    h("a", { href: "/", class: "brand", style: "text-decoration: none", title: "Zur Startseite" }, h("span", {}, "€"), " Finanz-Manager"),
     h(
       "nav",
       { "aria-label": "Hauptnavigation" },
-      NAV_LINKS.map(([href, label]) => h("a", { href, class: path === href ? "active" : null }, label)),
+      NAV_LINKS.map(([href, symbol, label]) =>
+        h("a", { href, class: path === href ? "active" : null }, icon(symbol), label),
+      ),
     ),
     h(
       "button",
@@ -135,6 +142,7 @@ function renderAppHeader() {
           location.href = "/login";
         },
       },
+      icon("🚪"),
       "Abmelden",
     ),
   );
