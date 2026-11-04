@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (await currentUser()) {
     const header = document.getElementById("header-link");
     header.href = "/dashboard";
-    header.textContent = "Zum Dashboard";
+    header.replaceChildren(icon("📊"), "Zum Dashboard");
     document.getElementById("hero-actions").replaceChildren(
-      h("a", { href: "/dashboard", class: "btn btn-primary btn-large" }, "Zum Dashboard"),
+      h("a", { href: "/dashboard", class: "btn btn-primary btn-large" }, icon("📊"), "Zum Dashboard"),
     );
     const cta = document.getElementById("cta-link");
     cta.href = "/dashboard";
-    cta.textContent = "Zum Dashboard";
+    cta.replaceChildren(icon("📊"), "Zum Dashboard");
   }
 });

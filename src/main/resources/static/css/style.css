@@ -79,6 +79,9 @@ a { color: inherit; }
 .app-header nav a { text-decoration: none; }
 .app-header nav a:hover, .app-header nav a.active { color: var(--accent-text); }
 .app-header nav a.active { text-decoration: underline; text-underline-offset: 4px; }
+.app-header nav a, .app-header .btn-text { display: inline-flex; align-items: center; gap: 6px; }
+a .icon, button .icon { display: inline-block; margin-right: 6px; text-decoration: none; }
+.app-header nav a .icon, .app-header .btn-text .icon { margin-right: 0; }
 
 /* Formulare und Buttons */
 label { display: flex; flex-direction: column; gap: 4px; font-size: 0.875rem; }
