@@ -50,5 +50,6 @@ Stand: 2026-11-05
 - [x] Umstellung auf Java: Spring-Boot-Backend mit REST-API, eigenem Login (Spring Security) und Flyway-Schema
 - [x] Frontend in HTML/CSS/JS nachgebaut (alle Seiten wie vorher)
 - [x] Tests (JUnit + MockMvc), lokal mit PostgreSQL 16 durchgeklickt
+- [x] Navigation nach dem Login: Logo führt zur Startseite, Startseite zeigt angemeldet „Zum Dashboard“, Login/Registrieren leiten Angemeldete zum Dashboard weiter
 - [x] Lokal mit Docker starten (Docker Desktop + WSL2 unter Windows eingerichtet, App läuft auf http://localhost:8080)
 - [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)

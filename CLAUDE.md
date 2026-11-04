@@ -22,7 +22,7 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
   - `config/SecurityConfig.java` – Session-Login, CSRF per Cookie `XSRF-TOKEN`, `/api/**` braucht Anmeldung, 401 statt Redirect
   - `config/WebConfig.java` – schöne URLs (`/dashboard` → `dashboard.html`); neue Seiten dort eintragen
   - `common/` – `ApiException` (Fehler mit deutscher Meldung → JSON `{"error": ...}`), `Money` (Euro-Text → Cent), `Months` (`YYYY-MM`)
-- `src/main/resources/static/` – Frontend: eine HTML-Datei pro Seite, `js/common.js` (API-Aufrufe, `formatCents`, Monate, Kopfzeile, `budgetBar`), ein Skript pro Seite, `css/style.css`
+- `src/main/resources/static/` – Frontend: eine HTML-Datei pro Seite, `js/common.js` (API-Aufrufe, `currentUser`, `formatCents`, Monate, Kopfzeile, `budgetBar`), ein Skript pro Seite, `css/style.css`
 - `src/main/resources/db/migration/` – Flyway-Migrationen (`V2__beschreibung.sql` usw.), nie bestehende Dateien ändern
 - `src/main/resources/application.properties` – Konfiguration, DB über `DB_URL`, `DB_USER`, `DB_PASSWORD`
 - `src/test/` – JUnit-Tests (`ApiIntegrationTest` mit MockMvc)
@@ -60,5 +60,6 @@ Stand: 2026-11-05
 - [x] Umstellung auf Java: Spring-Boot-Backend mit REST-API, eigenem Login (Spring Security) und Flyway-Schema
 - [x] Frontend in HTML/CSS/JS nachgebaut (alle Seiten wie vorher)
 - [x] Tests (JUnit + MockMvc), lokal mit PostgreSQL 16 durchgeklickt
+- [x] Navigation nach dem Login: Logo führt zur Startseite, Startseite zeigt angemeldet „Zum Dashboard“, Login/Registrieren leiten Angemeldete zum Dashboard weiter
 - [x] Lokal mit Docker starten (Docker Desktop + WSL2 unter Windows eingerichtet, App läuft auf http://localhost:8080)
 - [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)

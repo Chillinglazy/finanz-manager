@@ -1,7 +1,12 @@
 "use strict";
 
 // Login und Registrierung: schickt E-Mail und Passwort an die Java-API und leitet zum Dashboard weiter.
-document.addEventListener("DOMContentLoaded", () => {
+// Wer schon angemeldet ist, kommt direkt zum Dashboard.
+document.addEventListener("DOMContentLoaded", async () => {
+  if (await currentUser()) {
+    location.replace("/dashboard");
+    return;
+  }
   const form = document.getElementById("auth-form");
   const error = document.getElementById("form-error");
   const button = form.querySelector("button[type=submit]");
