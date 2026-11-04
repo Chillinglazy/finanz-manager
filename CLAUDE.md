@@ -51,7 +51,7 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 
 ## Fortschritt
 
-Stand: 2026-11-04
+Stand: 2026-11-05
 
 - [x] Stack-Empfehlung und MVP-Plan (`docs/plan.md`)
 - [x] Ordnerstruktur und CLAUDE.md angelegt
@@ -61,5 +61,5 @@ Stand: 2026-11-04
 - [x] Frontend in HTML/CSS/JS nachgebaut (alle Seiten wie vorher)
 - [x] Tests (JUnit + MockMvc), lokal mit PostgreSQL 16 durchgeklickt
 - [x] Navigation nach dem Login: Logo führt zur Startseite, Startseite zeigt angemeldet „Zum Dashboard“, Login/Registrieren leiten Angemeldete zum Dashboard weiter
-- [ ] Lokal mit Docker starten und selbst ausprobieren
+- [x] Lokal mit Docker starten (Docker Desktop + WSL2 unter Windows eingerichtet, App läuft auf http://localhost:8080)
 - [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)

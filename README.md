@@ -8,7 +8,7 @@ Siehe [docs/plan.md](docs/plan.md) für Stack und MVP-Plan.
 
 ## Lokal starten
 
-1. Java 21 (JDK) und Docker installieren
+1. Java 21 oder neuer (JDK) und Docker installieren (Windows: Docker Desktop braucht WSL2 und die Windows-Komponente „Windows-Subsystem für Linux“)
 2. Datenbank starten: `docker compose up -d` (PostgreSQL 16 auf Port 5432)
 3. App starten: `./mvnw spring-boot:run` (Windows: `mvnw.cmd spring-boot:run`)
 4. http://localhost:8080 öffnen und registrieren
@@ -41,7 +41,7 @@ Alle Endpunkte unter `/api` außer Login und Registrierung brauchen eine Anmeldu
 
 ## Fortschritt
 
-Stand: 2026-11-04
+Stand: 2026-11-05
 
 - [x] Stack-Empfehlung und MVP-Plan (`docs/plan.md`)
 - [x] Ordnerstruktur und CLAUDE.md angelegt
@@ -51,5 +51,5 @@ Stand: 2026-11-04
 - [x] Frontend in HTML/CSS/JS nachgebaut (alle Seiten wie vorher)
 - [x] Tests (JUnit + MockMvc), lokal mit PostgreSQL 16 durchgeklickt
 - [x] Navigation nach dem Login: Logo führt zur Startseite, Startseite zeigt angemeldet „Zum Dashboard“, Login/Registrieren leiten Angemeldete zum Dashboard weiter
-- [ ] Lokal mit Docker starten und selbst ausprobieren
+- [x] Lokal mit Docker starten (Docker Desktop + WSL2 unter Windows eingerichtet, App läuft auf http://localhost:8080)
 - [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)
