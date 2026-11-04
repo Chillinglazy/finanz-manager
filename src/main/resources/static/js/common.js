@@ -93,6 +93,15 @@ async function api(path, { method = "GET", body, redirectOn401 = true } = {}) {
   return data;
 }
 
+/** Angemeldeter Nutzer ({ email }) oder null, ohne Weiterleitung zum Login. */
+async function currentUser() {
+  try {
+    return await api("/api/auth/me", { redirectOn401: false });
+  } catch {
+    return null;
+  }
+}
+
 // ---------- Bausteine ----------
 
 const NAV_LINKS = [
@@ -102,13 +111,14 @@ const NAV_LINKS = [
   ["/kategorien", "Kategorien"],
 ];
 
-/** Füllt <header id="app-header"> mit Navigation und Abmelden-Button. */
+/** Füllt <header id="app-header"> mit Logo (Link zur Startseite), Navigation und Abmelden-Button. */
 function renderAppHeader() {
   const header = document.getElementById("app-header");
   if (!header) return;
   header.className = "app-header";
   const path = location.pathname.replace(/\.html$/, "");
   header.replaceChildren(
+    h("a", { href: "/", class: "brand", style: "text-decoration: none" }, h("span", {}, "€"), " Finanz-Manager"),
     h(
       "nav",
       { "aria-label": "Hauptnavigation" },
