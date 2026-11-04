@@ -41,7 +41,7 @@ Alle Endpunkte unter `/api` außer Login und Registrierung brauchen eine Anmeldu
 
 ## Fortschritt
 
-Stand: 2026-10-31
+Stand: 2026-11-04
 
 - [x] Stack-Empfehlung und MVP-Plan (`docs/plan.md`)
 - [x] Ordnerstruktur und CLAUDE.md angelegt
@@ -50,5 +50,6 @@ Stand: 2026-10-31
 - [x] Umstellung auf Java: Spring-Boot-Backend mit REST-API, eigenem Login (Spring Security) und Flyway-Schema
 - [x] Frontend in HTML/CSS/JS nachgebaut (alle Seiten wie vorher)
 - [x] Tests (JUnit + MockMvc), lokal mit PostgreSQL 16 durchgeklickt
+- [x] Navigation nach dem Login: Logo führt zur Startseite, Startseite zeigt angemeldet „Zum Dashboard“, Login/Registrieren leiten Angemeldete zum Dashboard weiter
 - [ ] Lokal mit Docker starten und selbst ausprobieren
 - [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)
