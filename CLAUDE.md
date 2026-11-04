@@ -51,7 +51,7 @@ Details zum MVP: [docs/plan.md](docs/plan.md).
 
 ## Fortschritt
 
-Stand: 2026-10-31
+Stand: 2026-11-05
 
 - [x] Stack-Empfehlung und MVP-Plan (`docs/plan.md`)
 - [x] Ordnerstruktur und CLAUDE.md angelegt
@@ -60,5 +60,5 @@ Stand: 2026-10-31
 - [x] Umstellung auf Java: Spring-Boot-Backend mit REST-API, eigenem Login (Spring Security) und Flyway-Schema
 - [x] Frontend in HTML/CSS/JS nachgebaut (alle Seiten wie vorher)
 - [x] Tests (JUnit + MockMvc), lokal mit PostgreSQL 16 durchgeklickt
-- [ ] Lokal mit Docker starten und selbst ausprobieren
+- [x] Lokal mit Docker starten (Docker Desktop + WSL2 unter Windows eingerichtet, App läuft auf http://localhost:8080)
 - [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)
