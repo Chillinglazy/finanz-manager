@@ -1,10 +1,14 @@
-# Stack-Empfehlung und MVP-Plan
+# Stack und MVP-Plan
 
-## Stack
-- Next.js + TypeScript: Frontend und Backend in einem Projekt
-- Supabase: Login/Accounts und Postgres-Datenbank; Row Level Security, damit jeder Nutzer nur seine eigenen Daten sieht
-- Tailwind CSS fürs Design; Diagramme im Dashboard vorerst als einfache Tailwind-Balken ohne Zusatzpaket
-- Hosting: Vercel + Supabase Free Tier
+## Stack (seit 2026-10-31)
+- Backend: Java 21 + Spring Boot 4 mit REST-API unter `/api`
+- Login: E-Mail und Passwort über Spring Security (Session-Cookie, Passwörter mit BCrypt, CSRF-Schutz)
+- Datenbank: PostgreSQL, Zugriff über Spring Data JPA, Schema über Flyway-Migrationen; jeder Nutzer sieht nur seine eigenen Daten (Filter auf `user_id` in jedem Service)
+- Frontend: reines HTML, CSS und JavaScript, von Spring Boot ausgeliefert (`src/main/resources/static`)
+- Lokal: PostgreSQL per `docker compose`; Tests mit JUnit und H2
+- Hosting: Java-fähiger Anbieter (z. B. Render oder Railway), Datenbank z. B. Supabase-Postgres oder Postgres des Anbieters
+
+Vorher (bis 2026-10-31): Next.js + TypeScript + Supabase + Tailwind, steht noch in der Git-Historie.
 
 ## MVP
 1. Registrierung und Login (E-Mail und Passwort)
@@ -14,9 +18,8 @@
 5. Dashboard: Ausgaben vs. Budget pro Kategorie, Monatssaldo, einfache Diagramme
 
 ## Ordnerstruktur
-- `src/app` – Seiten und Routen (Next.js App Router)
-- `src/components` – UI-Komponenten
-- `src/lib` – Supabase-Client, Hilfsfunktionen
-- `supabase/migrations` – Datenbankschema (SQL)
-- `public` – statische Dateien
+- `src/main/java/de/finanzmanager` – Backend, ein Paket pro Bereich (`user`, `category`, `transaction`, `budget`, `dashboard`, `config`, `common`)
+- `src/main/resources/static` – Frontend (HTML, `css/`, `js/`)
+- `src/main/resources/db/migration` – Datenbankschema (Flyway)
+- `src/test` – Tests
 - `docs` – Planung und Dokumentation

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kategorien · Finanz-Manager</title>
+  <meta name="description" content="Budgets, Kategorien und Ausgaben im Blick">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/kategorien.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header id="app-header"></header>
+    <h1>Kategorien</h1>
+    <p id="load-error" class="error hidden" role="alert"></p>
+    <div class="columns">
+      <section class="stack" data-kind="EXPENSE">
+        <h2>Ausgaben</h2>
+        <div class="category-list"></div>
+      </section>
+      <section class="stack" data-kind="INCOME">
+        <h2>Einnahmen</h2>
+        <div class="category-list"></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
