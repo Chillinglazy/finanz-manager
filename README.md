@@ -53,4 +53,5 @@ Stand: 2026-11-05
 - [x] Navigation nach dem Login: Logo führt zur Startseite, Startseite zeigt angemeldet „Zum Dashboard“, Login/Registrieren leiten Angemeldete zum Dashboard weiter
 - [x] Lokal mit Docker starten (Docker Desktop + WSL2 unter Windows eingerichtet, App läuft auf http://localhost:8080)
 - [x] Symbole in der Navigation (📊 Dashboard, 💸 Transaktionen, 🎯 Budgets, 🏷️ Kategorien, 🏠 Startseite, 🚪 Abmelden)
+- [x] Navigation aufgeräumt: Login/Registrieren nur noch ein Link „🏠 Zur Startseite“, Startseite bietet Angemeldeten „🚪 Abmelden“
 - [ ] Deployment (z. B. Render oder Railway, Datenbank z. B. Supabase-Postgres)

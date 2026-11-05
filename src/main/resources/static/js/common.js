@@ -116,6 +116,24 @@ function icon(symbol) {
   return h("span", { class: "icon", "aria-hidden": "true" }, symbol);
 }
 
+/** Button „Abmelden“: meldet ab und führt zum Login. */
+function logoutButton() {
+  return h(
+    "button",
+    {
+      type: "button",
+      class: "btn-text",
+      style: "text-decoration: underline",
+      onclick: async () => {
+        await api("/api/auth/logout", { method: "POST", redirectOn401: false }).catch(() => {});
+        location.href = "/login";
+      },
+    },
+    icon("🚪"),
+    "Abmelden",
+  );
+}
+
 /** Füllt <header id="app-header"> mit Logo (Link zur Startseite), Navigation und Abmelden-Button. */
 function renderAppHeader() {
   const header = document.getElementById("app-header");
@@ -131,20 +149,7 @@ function renderAppHeader() {
         h("a", { href, class: path === href ? "active" : null }, icon(symbol), label),
       ),
     ),
-    h(
-      "button",
-      {
-        type: "button",
-        class: "btn-text",
-        style: "text-decoration: underline",
-        onclick: async () => {
-          await api("/api/auth/logout", { method: "POST", redirectOn401: false }).catch(() => {});
-          location.href = "/login";
-        },
-      },
-      icon("🚪"),
-      "Abmelden",
-    ),
+    logoutButton(),
   );
 }
 
