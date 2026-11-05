@@ -15,11 +15,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     ),
   );
 
-  // Angemeldet: statt „Anmelden“ direkt zum Dashboard.
+  // Angemeldet: statt „Anmelden“ direkt zum Dashboard, dazu Abmelden.
   if (await currentUser()) {
     const header = document.getElementById("header-link");
     header.href = "/dashboard";
     header.replaceChildren(icon("📊"), "Zum Dashboard");
+    document.getElementById("header-actions").append(logoutButton());
     document.getElementById("hero-actions").replaceChildren(
       h("a", { href: "/dashboard", class: "btn btn-primary btn-large" }, icon("📊"), "Zum Dashboard"),
     );

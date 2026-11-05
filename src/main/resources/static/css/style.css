@@ -79,9 +79,10 @@ a { color: inherit; }
 .app-header nav a { text-decoration: none; }
 .app-header nav a:hover, .app-header nav a.active { color: var(--accent-text); }
 .app-header nav a.active { text-decoration: underline; text-underline-offset: 4px; }
-.app-header nav a, .app-header .btn-text { display: inline-flex; align-items: center; gap: 6px; }
+.header-actions { display: flex; align-items: center; gap: 16px; font-size: 0.875rem; white-space: nowrap; }
+.header-actions a, .app-header nav a, .app-header .btn-text, .header-actions .btn-text { display: inline-flex; align-items: center; gap: 6px; }
 a .icon, button .icon { display: inline-block; margin-right: 6px; text-decoration: none; }
-.app-header nav a .icon, .app-header .btn-text .icon { margin-right: 0; }
+.app-header nav a .icon, .app-header .btn-text .icon, .header-actions .icon { margin-right: 0; }
 
 /* Formulare und Buttons */
 label { display: flex; flex-direction: column; gap: 4px; font-size: 0.875rem; }
@@ -153,7 +154,8 @@ select.input option { background: var(--bg); }
 .budget-input { width: 8rem; text-align: right; }
 
 /* Landingpage */
-.landing-header { max-width: 64rem; margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; }
+.landing-header { max-width: 64rem; margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.landing-header .brand { white-space: nowrap; }
 .brand { font-size: 1.125rem; font-weight: 700; }
 .brand span { color: var(--accent); }
 .hero { max-width: 64rem; margin: 0 auto; padding: 48px 16px; display: grid; gap: 48px; align-items: center; }
